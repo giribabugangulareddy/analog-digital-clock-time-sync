@@ -1,6 +1,7 @@
-<header>
-  <h1 class="header">Analog Time and Digial Time Synics</h1>
-</header>
+<div class="header">
+  <h1>Analog Time and Digial Time syncs</h1>
+  <h5>Click on clock and customize your time</h5>
+</div>
 
 <div class="container">
   <div class="col-sm-6 text-center">
@@ -21,11 +22,12 @@
   </div>
   <div  class="col-sm-6 text-center">
     <h2>Digital Clock</h2>
-    <p (click)="openAddFileDialog()">{{ time$ | async | date:'hh:mm:ss'}}</p>
-    <input [ngxTimepicker]="picker" [(ngModel)]="timepicker" (ngModelChange)="selectChanged($event)" style="display: none;">
+    <p (click)="changeDigitalTime()">{{ time$ | async | date:'hh:mm:ss'}}</p>
+    <input [ngxTimepicker]="picker" [(ngModel)]="timepicker" (ngModelChange)="selectedTimeChanged($event)" style="display: none;">
     <ngx-material-timepicker #picker></ngx-material-timepicker>
   </div>
 
   
 </div>
-<button class="btn btn-primary" (click)="resetClock()">Reset Clock</button>
+
+<button class="btn btn-primary" (click)="resetClock()">Reset Time <mat-icon aria-hidden="false" aria-label="Example refresh icon">refresh</mat-icon></button>

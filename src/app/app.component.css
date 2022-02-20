@@ -67,8 +67,6 @@
   }
   
   .outer-clock-face::after {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
     transform: rotate(90deg)
   }
   
@@ -90,26 +88,18 @@
   }
   
   .outer-clock-face .marking.marking-one {
-    -webkit-transform: rotate(30deg);
-    -moz-transform: rotate(30deg);
     transform: rotate(30deg)
   }
   
   .outer-clock-face .marking.marking-two {
-    -webkit-transform: rotate(60deg);
-    -moz-transform: rotate(60deg);
     transform: rotate(60deg)
   }
   
   .outer-clock-face .marking.marking-three {
-    -webkit-transform: rotate(120deg);
-    -moz-transform: rotate(120deg);
     transform: rotate(120deg)
   }
   
   .outer-clock-face .marking.marking-four {
-    -webkit-transform: rotate(150deg);
-    -moz-transform: rotate(150deg);
     transform: rotate(150deg)
   }
   
@@ -120,8 +110,6 @@
     width: 80%;
     height: 80%;
     background: #282828;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     z-index: 1;
   }
@@ -139,7 +127,9 @@
     background: #4d4b63;
     z-index: 11;
   }
-  
+  .mat-icon{
+    vertical-align: inherit;
+  }
   @media screen and (max-width: 767px) {
     p{
     padding:auto 10px;

@@ -22,7 +22,8 @@ export class AppComponent {
   constructor(public dialog: MatDialog) { }
 
 
-  openAddFileDialog() {
+  // changeDigitalTime is change the digital time using dailog modal
+  changeDigitalTime() {
     this.matDialogRef = this.dialog.open(DigitalClockModalComponent, {
       width: '350px',
       data: this.customTime ? this.customTime : new Date()
@@ -43,17 +44,21 @@ export class AppComponent {
   }
 
 
+  // resetClock is reset the time for currrent time.
   resetClock() {
     this.enableCurrentTimeFlag = true;
     this.customTime = new Date();
   }
-  selectChanged(value) {
+  // selectedTimeChanged is get the updated analog time and set the date fromat with help of moment() method
+  selectedTimeChanged(value) {
     this.enableCurrentTimeFlag = false
     console.log("value value", value)
     this.analogTime = value
     this.customTime = moment(this.analogTime, 'hh:mm:ss').toDate();
     console.log("this.custtime", this.customTime)
   }
+  // time Observable and type is Date, to get the second of time data
+  // interval() method repeats a block of code at every given timing event and 1000 = 1second
   private time: Observable<Date> = interval(1000)
     .pipe(
       map(tick => {
@@ -66,37 +71,42 @@ export class AppComponent {
       shareReplay(1)
     );
 
+    // hours$ is oberable and type is number, get the hours number from time$ oberver
   private hours$: Observable<number> =
     this.time$.pipe(
       map((now: Date) => now.getHours())
     );
 
-
+// minutes$ is oberable and type is number, get the minutes number from time$ oberver
   private minutes$: Observable<number> = this.time$.pipe(
     map((now: Date) => now.getMinutes())
   );
 
-
+// seconds$ is oberable and type is number, get the seconds number from time$ oberver
   private seconds$: Observable<number> = this.time$.pipe(
     map((now: Date) => now.getSeconds())
   );
 
+  // time$ oberable is return the full time like hour,minute,seconds
   get time$() {
     return this.time;
   }
 
+  // hourRotation is clock hour hands to rotate the based on hours
   get hourRotation() {
     return this.hours$.pipe(
       map(hours => hours / 12 * 360)
     );
   }
 
+    // minuteRotation is clock minute hands to rotate the based on minutes
   get minuteRotation() {
     return this.minutes$.pipe(
       map(minutes => minutes / 60 * 360)
     );
   }
 
+   // secondRotation is clock second hands to rotate the based on second
   get secondRotation() {
     return this.seconds$.pipe(
       map(seconds => seconds / 60 * 360)

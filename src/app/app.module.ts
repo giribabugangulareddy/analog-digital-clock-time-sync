@@ -9,7 +9,7 @@ import { DigitalClockModalComponent } from './digital-clock-modal/digital-clock-
 import { MatDialogModule } from "@angular/material/dialog";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     NgbModule,
     MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   entryComponents:[DigitalClockModalComponent],

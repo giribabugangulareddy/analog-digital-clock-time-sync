@@ -9,7 +9,8 @@ import * as moment from 'moment';
 })
 export class DigitalClockModalComponent implements OnInit {
 
-  seletedTime = { hour: 13, minute: 30, second: 0 }
+  
+  seletedTime:any;
 
   constructor(
     public dialogRef: MatDialogRef<DigitalClockModalComponent>,
@@ -17,11 +18,14 @@ export class DigitalClockModalComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // get the last updated time from digital clock
     this.data = moment(this.data, 'hh:mm:ss').toDate()
 
+    // set time to modal time
     this.seletedTime = { hour: this.data.getHours(), minute: this.data.getMinutes(), second: this.data.getSeconds() }
   }
 
+  // get the updated time from the modal and send to digital clock
   CloseModal() {
     var data = this.seletedTime
     this.dialogRef.close(data);
