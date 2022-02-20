@@ -31,13 +31,10 @@ export class AppComponent {
     });
 
     this.matDialogRef.afterClosed().subscribe(res => {
-      console.log("resss", res);
       if (res) {
         this.enableCurrentTimeFlag = false
         this.getDigitalTime = res.hour + ':' + res.minute
-        console.log("bootstrapTime time", this.getDigitalTime);
         this.customTime = moment(this.getDigitalTime, 'hh:mm:ss').toDate();
-        console.log("bootstrapTime time111", this.customTime);
       }
 
     });
@@ -52,10 +49,8 @@ export class AppComponent {
   // selectedTimeChanged is get the updated analog time and set the date fromat with help of moment() method
   selectedTimeChanged(value) {
     this.enableCurrentTimeFlag = false
-    console.log("value value", value)
     this.analogTime = value
     this.customTime = moment(this.analogTime, 'hh:mm:ss').toDate();
-    console.log("this.custtime", this.customTime)
   }
   // time Observable and type is Date, to get the second of time data
   // interval() method repeats a block of code at every given timing event and 1000 = 1second
