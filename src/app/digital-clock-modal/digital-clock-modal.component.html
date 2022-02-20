@@ -1,0 +1,10 @@
+<div>
+    <h2>Select Your Time</h2>
+    <ngb-timepicker [(ngModel)]="seletedTime" [meridian]="true"></ngb-timepicker>
+    <div>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CloseModal()">OK</button>
+        </mat-dialog-actions>
+    </div>
+</div>
